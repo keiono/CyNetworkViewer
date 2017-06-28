@@ -5,14 +5,15 @@ module.exports = {
   context: path.join(__dirname, './src'),
 
   entry: {
-    app: "./CyViewer.jsx"
+    app: './CyViewer.jsx'
   },
+
   output: {
     path: path.join(__dirname, "build"),
     library: "CyNetworkViewer",
-    libraryTarget: "umd",
     filename: "CyNetworkViewer.js"
   },
+
   module: {
     rules: [
       {
@@ -27,11 +28,18 @@ module.exports = {
       }
     ]
   },
+
+
+  externals: {
+    'react': 'react',
+    'react-dom': 'react-dom'
+  },
+
   resolve: {
     extensions: ['.js', '.jsx']
   },
+
   plugins: [
     new webpack.NamedModulesPlugin()
-    // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' })
   ]
 }

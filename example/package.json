@@ -11,13 +11,14 @@
   "dependencies": {
     "async": "^2.5.0",
     "cy-viewer": "^3.0.0",
-    "has-flag": "^2.0.0",
     "immutable": "^3.8.1",
-    "path-exists": "^3.0.0",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "has-flag": "^2.0.0",
+    "path-exists": "^3.0.0",
     "array-flatten": "^2.1.1",
     "babel-core": "^6.3.21",
     "babel-loader": "^6.2.0",

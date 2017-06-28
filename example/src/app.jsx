@@ -4,7 +4,7 @@
  * (No Redux)
  *
  */
-import React, {Component} from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import CyViewer from 'cy-viewer' // The viewer React component
 

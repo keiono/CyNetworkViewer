@@ -116,7 +116,7 @@ const DEF_EVENT_HANDLERS = Immutable.fromJS({
  * This encapsulate the actual renderer component and
  * hides their raw API.
  */
-class CyViewer extends Component {
+class CyNetworkViewer extends Component {
 
   constructor(props) {
     super(props);
@@ -256,7 +256,7 @@ class CyViewer extends Component {
 }
 
 
-CyViewer.propTypes = {
+CyNetworkViewer.propTypes = {
   // Network data in CX
   network: PropTypes.any,
 
@@ -284,7 +284,7 @@ CyViewer.propTypes = {
 };
 
 
-CyViewer.defaultProps = {
+CyNetworkViewer.defaultProps = {
   network: null,
   networkType: TYPE_CX,
   command: null,
@@ -294,4 +294,4 @@ CyViewer.defaultProps = {
   serviceUrl: 'http://ci-dev-serv.ucsd.edu:3001/cx2cyjs'
 };
 
-export default CyViewer
+export default CyNetworkViewer

@@ -301,12 +301,13 @@ class CytoscapeJsRenderer extends Component {
   cyEventHandler = event => {
     this.state.cyjs.off(config.SUPPORTED_EVENTS)
 
-    console.log("*********** CyjsEvent Handler called!")
+    console.log("*** Event Handler called!")
 
     const cy = this.state.cyjs
-
     const eventType = event.originalEvent.type;
-    const target = event.cyTarget;
+    const target = event.target;
+
+    console.log(event)
 
     if(target === undefined || target === null) {
       return
@@ -365,6 +366,7 @@ class CytoscapeJsRenderer extends Component {
     }
 
     this.state.cyjs.on(config.SUPPORTED_EVENTS, this.cyEventHandler)
+    console.log("*** Event handling finished")
   }
 
   /**
@@ -374,7 +376,7 @@ class CytoscapeJsRenderer extends Component {
     cy.on(config.SUPPORTED_EVENTS, this.cyEventHandler)
 
     cy.on('tap', function(e){
-      if( e.cyTarget === cy ){
+      if( e.target === cy ){
         cy.elements().removeClass('faded focused');
       }
     })

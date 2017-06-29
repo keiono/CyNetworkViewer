@@ -1,15 +1,12 @@
 /**
  *
- * Sample application only with React component.
- * (No Redux)
+ * Sample web application only with React component.
  *
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import CyNetworkViewer from 'cy-network-viewer'
 
-// HTML section to be used for rendering component
-const TAG = 'viewer';
 
 /**
  * Custom functions to handle selection events in the renderer
@@ -29,21 +26,10 @@ function selectEdges(edgeIds, edgeProps) {
 }
 
 // Then use it as a custom handler
-const custom = {
+const customEventHandlers = {
   selectNodes: selectNodes,
   selectEdges: selectEdges
 };
-
-
-// React Application implemented as a stateless functional component
-const App = props =>
-  <section style={props.appStyle}>
-    <h2 style={props.titleStyle}>Atgo rendered by new viewer</h2>
-    <CyNetworkViewer
-      {...props}
-    />
-  </section>;
-
 
 // Styles
 const appStyle = {
@@ -68,10 +54,22 @@ const titleStyle = {
   paddingLeft: '0.8em',
 };
 
+// React Application implemented as a stateless functional component
+const App = props =>
+  <section style={props.appStyle}>
+
+    <h2 style={props.titleStyle}>Atgo rendered by new viewer</h2>
+
+    <CyNetworkViewer
+      {...props}
+    />
+
+  </section>;
+
 
 const sizeCalculator = ele => {
   const size = ele.data('Size')
-  if(size !== undefined) {
+  if (size !== undefined) {
     return Math.log(size) * 30
   } else {
     return 10
@@ -80,7 +78,7 @@ const sizeCalculator = ele => {
 
 const fontSizeCalculator = ele => {
   const size = ele.data('Size')
-  if(size !== undefined) {
+  if (size !== undefined) {
     const fontSize = Math.log(size) / 2
     return fontSize + 'em'
   } else {
@@ -93,48 +91,48 @@ const edgeColor = '#AAAAAA'
 const visualStyle = {
   style: [
     {
-      "selector" : "node",
-      "css" : {
-        "font-family" : "SansSerif",
-        "shape" : "ellipse",
-        "background-color" : 'mapData(score, 0, 1, white, #0033FF)',
-        "width" : sizeCalculator,
+      "selector": "node",
+      "css": {
+        "font-family": "SansSerif",
+        "shape": "ellipse",
+        "background-color": 'mapData(score, 0, 1, white, #0033FF)',
+        "width": sizeCalculator,
         "text-margin-x": '1em',
-        "text-valign" : "center",
-        "text-halign" : "right",
+        "text-valign": "center",
+        "text-halign": "right",
         "color": 'white',
         "min-zoomed-font-size": '1em',
-        "font-size" : fontSizeCalculator,
-        "height" : sizeCalculator,
-        "content" : "data(Manual_Name)",
+        "font-size": fontSizeCalculator,
+        "height": sizeCalculator,
+        "content": "data(Manual_Name)",
         "text-wrap": 'wrap',
         "text-max-width": '40em'
       }
     },
     {
-      "selector" : "node:selected",
-      "css" : {
-        "background-color" : "red",
-        "color" : "red"
+      "selector": "node:selected",
+      "css": {
+        "background-color": "red",
+        "color": "red"
       }
     },
     {
-      "selector" : "edge",
-      "css" : {
+      "selector": "edge",
+      "css": {
         "opacity": 0.5,
-        "line-color" : edgeColor,
+        "line-color": edgeColor,
         "source-arrow-shape": 'triangle',
         "mid-source-arrow-shape": 'triangle',
         "source-arrow-color": edgeColor,
         "mid-source-arrow-color": edgeColor,
-        "color" : "white"
+        "color": "white"
       }
     },
     {
-      "selector" : "edge:selected",
-      "css" : {
-        "line-color" : "red",
-        "color" : "white",
+      "selector": "edge:selected",
+      "css": {
+        "line-color": "red",
+        "color": "white",
         "source-arrow-color": "red",
         "mid-source-arrow-color": "red",
         "width": '1em'
@@ -143,31 +141,29 @@ const visualStyle = {
   ]
 }
 
-
-const renderPage = (network, command) => {
+const renderPage = network => {
   ReactDOM.render(
     <App
       network={network}
       networkType={'cyjs'}
       style={style}
-      eventHandlers={custom}
+      eventHandlers={customEventHandlers}
       appStyle={appStyle}
       titleStyle={titleStyle}
       networkStyle={visualStyle}
-      command={command}
-      rendererOptions={{layout: 'concentric'}}
     />,
     document.getElementById(TAG)
   );
 };
 
-const url = 'http://public.ndexbio.org/rest/network/507d3d72-14e5-11e6-a1f8-06603eb7f303/asCX';
-
 const cyjsUrl = 'https://raw.githubusercontent.com/idekerlab/ontology-data-generators/master/atgo.cyjs'
+
+// HTML section to be used for rendering component
+const TAG = 'viewer';
 
 // Download the data and run the app
 fetch(cyjsUrl)
-    .then(response => (response.json()))
-    .then(network => {
-      renderPage(network, null);
-    });
+  .then(response => (response.json()))
+  .then(network => {
+    renderPage(network)
+  });

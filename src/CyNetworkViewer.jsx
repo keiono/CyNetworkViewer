@@ -1,5 +1,7 @@
-import React, {Component, PropTypes} from 'react'
-import Immutable, {Map} from 'immutable'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+
+import Immutable from 'immutable'
 import shortid from 'shortid'
 
 // Actual renderer.  For now, it is Cytoscpae.js

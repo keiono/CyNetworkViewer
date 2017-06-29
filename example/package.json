@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "async": "^2.5.0",
-    "cy-viewer": "^3.0.0",
+    "cy-network-viewer": "^1.0.0",
     "immutable": "^3.8.1",
-    "prop-types": "^15.5.10",
     "react": "^15.6.1",
+    "prop-types": "^15.5.10",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {

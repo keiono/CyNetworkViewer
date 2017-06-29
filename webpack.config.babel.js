@@ -1,16 +1,17 @@
 const webpack = require('webpack');
 const path = require('path');
 
-module.exports = {
+export default () => ({
   context: path.join(__dirname, './src'),
 
   entry: {
-    app: './CyViewer.jsx'
+    app: './CyNetworkViewer.jsx'
   },
 
   output: {
     path: path.join(__dirname, "build"),
     library: "CyNetworkViewer",
+    libraryTarget: "umd",
     filename: "CyNetworkViewer.js"
   },
 
@@ -28,13 +29,26 @@ module.exports = {
       }
     ]
   },
-
-
   externals: {
-    'react': 'react',
-    'react-dom': 'react-dom'
+    'react': {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react',
+      root: 'React'
+    },
+    'prop-types': {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'prop-types',
+      root: 'PropTypes'
+    },
+    'immutable': {
+      commonjs: 'immutable',
+      commonjs2: 'immutable',
+      amd: 'immutable',
+      root: 'Immutable'
+    }
   },
-
   resolve: {
     extensions: ['.js', '.jsx']
   },
@@ -42,4 +56,4 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin()
   ]
-}
+});

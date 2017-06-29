@@ -6,7 +6,7 @@
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import CyViewer from 'cy-viewer' // The viewer React component
+import CyNetworkViewer from 'cy-network-viewer'
 
 // HTML section to be used for rendering component
 const TAG = 'viewer';
@@ -38,8 +38,8 @@ const custom = {
 // React Application implemented as a stateless functional component
 const App = props =>
   <section style={props.appStyle}>
-    <h2 style={props.titleStyle}>AtgO rendered by new viewer</h2>
-    <CyViewer
+    <h2 style={props.titleStyle}>Atgo rendered by new viewer</h2>
+    <CyNetworkViewer
       {...props}
     />
   </section>;

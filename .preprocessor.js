@@ -1,5 +1,5 @@
-var babelJest = require('babel-jest')
-var webpackAlias = require('jest-webpack-alias')
+const babelJest = require('babel-jest')
+const webpackAlias = require('jest-webpack-alias')
 
 module.exports = {
   process: function (src, filename) {

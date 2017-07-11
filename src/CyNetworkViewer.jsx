@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-
 import Immutable from 'immutable'
 import shortid from 'shortid'
 
 // Actual renderer.  For now, it is Cytoscpae.js
-import CytoscapeJsRenderer from './CytoscapeJsRenderer'
+import CytoscapeJsRenderer from 'cytoscapejs-renderer'
 
 // Base style for the region for the network renderer
 const STYLE = { width: '100%', height: '100%' };
@@ -137,9 +136,6 @@ class CyNetworkViewer extends Component {
       return;
     }
 
-    console.log('========== API call for cx to CYJS')
-    console.log(cxNetwork)
-
     const params = {
       method: 'post',
       headers: {
@@ -207,6 +203,7 @@ class CyNetworkViewer extends Component {
     }
 
 
+    const Renderer = this.props.renderer
 
     // TODO: how can I avoid using state for storing native network data?
     let network = this.state.cyjsNetwork
@@ -234,7 +231,7 @@ class CyNetworkViewer extends Component {
     }
 
     return (
-      <CytoscapeJsRenderer
+      <Renderer
         {...this.props}
         network={network}
         networkId={this.state.networkId}
@@ -257,6 +254,10 @@ class CyNetworkViewer extends Component {
 
 
 CyNetworkViewer.propTypes = {
+
+  // Renderer component
+  renderer: PropTypes.element,
+
   // Network data in CX
   network: PropTypes.any,
 
@@ -285,6 +286,7 @@ CyNetworkViewer.propTypes = {
 
 
 CyNetworkViewer.defaultProps = {
+  renderer: CytoscapeJsRenderer,
   network: null,
   networkType: TYPE_CX,
   command: null,

@@ -163,7 +163,7 @@ const renderPage = network => {
 const cyjsUrl = 'https://raw.githubusercontent.com/idekerlab/ontology-data-generators/master/atgo.cyjs'
 
 // HTML section to be used for rendering component
-const TAG = 'viewer';
+const TAG = 'viewer'
 
 // Download the data and run the app
 fetch(cyjsUrl)

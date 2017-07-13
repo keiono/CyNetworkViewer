@@ -1,7 +1,7 @@
 {
   "name": "cy-network-viewer",
   "author": "Keiichiro Ono <kono@ucsd.edu>",
-  "version": "v1.0.0",
+  "version": "v0.1.0",
   "description": "React component for graph data visualization",
   "license": "MIT",
   "keywords": [

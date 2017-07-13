@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: path.join(__dirname, './src'),
@@ -29,5 +30,12 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx']
-  }
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'CyNetworkViewer Sample',
+      template: 'index.html'
+    })
+  ]
 }

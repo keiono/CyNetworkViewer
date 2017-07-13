@@ -112,4 +112,6 @@ Temporary Items
 *.iml
 /build
 
+example/build/*
+
 example/wrapper-example/build/*.js

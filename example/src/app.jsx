@@ -6,6 +6,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import CyNetworkViewer from 'cy-network-viewer'
+import CytoscapeJsRenderer from 'cytoscapejs-renderer'
 
 
 /**
@@ -54,13 +55,17 @@ const titleStyle = {
   paddingLeft: '0.8em',
 };
 
+
+const NetworkViewer = CyNetworkViewer(CytoscapeJsRenderer)
+
+
 // React Application implemented as a stateless functional component
 const App = props =>
   <section style={props.appStyle}>
 
-    <h2 style={props.titleStyle}>Atgo rendered by new viewer</h2>
+    <h2 style={props.titleStyle}>CyNetworkViewer Demo</h2>
 
-    <CyNetworkViewer
+    <NetworkViewer
       {...props}
     />
 
@@ -145,7 +150,6 @@ const renderPage = network => {
   ReactDOM.render(
     <App
       network={network}
-      networkType={'cyjs'}
       style={style}
       eventHandlers={customEventHandlers}
       appStyle={appStyle}

@@ -161,6 +161,7 @@ const renderPage = network => {
 };
 
 const cyjsUrl = 'https://raw.githubusercontent.com/idekerlab/ontology-data-generators/master/atgo.cyjs'
+const largeGo = 'http://v1.cxtool.cytoscape.io/ndex2cyjs/20bcb48f-3e6b-11e7-baf1-0660b7976219?server=test'
 
 // HTML section to be used for rendering component
 const TAG = 'viewer'

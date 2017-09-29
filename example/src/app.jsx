@@ -6,7 +6,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import CyNetworkViewer from 'cy-network-viewer'
-import CytoscapeJsRenderer from 'cytoscapejs-renderer'
+import {CytoscapeJsRenderer, SigmaRenderer} from 'cytoscapejs-renderer'
 
 
 /**
@@ -41,9 +41,17 @@ const appStyle = {
 };
 
 const style = {
-  width: '100%',
+  width: '50%',
   height: '100%',
-  backgroundColor: '#404040'
+  backgroundColor: '#333333'
+};
+
+const styleSigma = {
+  width: '50%',
+  height: '100%',
+  backgroundColor: '#FAFAFA',
+  right: 0,
+  position: 'absolute'
 };
 
 const titleStyle = {
@@ -56,7 +64,11 @@ const titleStyle = {
 };
 
 
-const NetworkViewer = CyNetworkViewer(CytoscapeJsRenderer)
+// CyNetworkViewer is a higher-order component,
+// taking low-level renderer as its argument.
+const CyJsNetworkViewer = CyNetworkViewer(CytoscapeJsRenderer)
+
+const NetworkViewer = CyNetworkViewer(SigmaRenderer)
 
 
 // React Application implemented as a stateless functional component
@@ -65,6 +77,10 @@ const App = props =>
 
     <h2 style={props.titleStyle}>CyNetworkViewer Demo</h2>
 
+    <CyJsNetworkViewer
+      style={styleSigma}
+      {...props}
+    />
     <NetworkViewer
       {...props}
     />
@@ -109,7 +125,7 @@ const visualStyle = {
         "min-zoomed-font-size": '1em',
         "font-size": fontSizeCalculator,
         "height": sizeCalculator,
-        "content": "data(Manual_Name)",
+        "content": "data(name)",
         "text-wrap": 'wrap',
         "text-max-width": '40em'
       }
@@ -162,12 +178,17 @@ const renderPage = network => {
 
 const cyjsUrl = 'https://raw.githubusercontent.com/idekerlab/ontology-data-generators/master/atgo.cyjs'
 const largeGo = 'http://v1.cxtool.cytoscape.io/ndex2cyjs/20bcb48f-3e6b-11e7-baf1-0660b7976219?server=test'
-
+const huge = 'https://gist.githubusercontent.com/keiono/edec04ea9940863094c0d7b398026ee9/raw/740c10cdcbf7ea2f20b097b8340be560b19ee1e6/hivew-sample1.cyjs'
 // HTML section to be used for rendering component
 const TAG = 'viewer'
 
+const cyjs2 = 'https://gist.githubusercontent.com/keiono/7a31466d20684875dc1738c9dee77f3b/raw/dc3172a1e95d1bc90cfd0092f7fd4981c9a428cb/yeastHighQualitySubnet.cyjs'
+const cyjs3 = 'https://gist.githubusercontent.com/keiono/cfc025bfba493f59718f9d52064978ea/raw/2092dc86f574ea905910b6675c2edb6b3c7bd912/cyjs3.cyjs'
+
+const goFull = 'https://gist.githubusercontent.com/keiono/cf4a2347b705e7406269eaf8821e84bd/raw/3d8095c416bdf519d3c7c583078040101d1b0ae7/gotreeFull.cyjs'
+
 // Download the data and run the app
-fetch(cyjsUrl)
+fetch(goFull)
   .then(response => (response.json()))
   .then(network => {
     renderPage(network)

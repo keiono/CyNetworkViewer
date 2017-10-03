@@ -1,6 +1,6 @@
 /**
  *
- * Sample web application only with React component.
+ * Sample web app using two types of renderers
  *
  */
 import React from 'react'
@@ -40,7 +40,9 @@ const appStyle = {
   height: '100%',
 };
 
-const style = {
+const styleCyjs = {
+  position: 'fixed',
+  left: 0,
   width: '50%',
   height: '100%',
   backgroundColor: '#333333'
@@ -49,9 +51,9 @@ const style = {
 const styleSigma = {
   width: '50%',
   height: '100%',
-  backgroundColor: '#FAFAFA',
+  backgroundColor: '#666677',
   right: 0,
-  position: 'absolute'
+  position: 'fixed'
 };
 
 const titleStyle = {
@@ -63,12 +65,19 @@ const titleStyle = {
   paddingLeft: '0.8em',
 };
 
+const subTitle = {
+  position: 'fixed',
+  top: '3em',
+  width: '50%',
+  fontSize: '2em',
+  zOrder: '1000',
+  backgroundColor: 'red'
+}
 
 // CyNetworkViewer is a higher-order component,
 // taking low-level renderer as its argument.
 const CyJsNetworkViewer = CyNetworkViewer(CytoscapeJsRenderer)
-
-const NetworkViewer = CyNetworkViewer(SigmaRenderer)
+const SigmaNetworkViewer = CyNetworkViewer(SigmaRenderer)
 
 
 // React Application implemented as a stateless functional component
@@ -77,12 +86,15 @@ const App = props =>
 
     <h2 style={props.titleStyle}>CyNetworkViewer Demo</h2>
 
+
+    <div style={subTitle}>Cytoscape.js</div>
     <CyJsNetworkViewer
-      style={styleSigma}
       {...props}
     />
-    <NetworkViewer
+
+    <SigmaNetworkViewer
       {...props}
+      style={styleSigma}
     />
 
   </section>;
@@ -166,7 +178,7 @@ const renderPage = network => {
   ReactDOM.render(
     <App
       network={network}
-      style={style}
+      style={styleCyjs}
       eventHandlers={customEventHandlers}
       appStyle={appStyle}
       titleStyle={titleStyle}
@@ -188,7 +200,7 @@ const cyjs3 = 'https://gist.githubusercontent.com/keiono/cfc025bfba493f59718f9d5
 const goFull = 'https://gist.githubusercontent.com/keiono/cf4a2347b705e7406269eaf8821e84bd/raw/3d8095c416bdf519d3c7c583078040101d1b0ae7/gotreeFull.cyjs'
 
 // Download the data and run the app
-fetch(goFull)
+fetch(cyjs3)
   .then(response => (response.json()))
   .then(network => {
     renderPage(network)

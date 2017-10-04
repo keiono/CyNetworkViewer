@@ -39,7 +39,7 @@
   },
   "peerDependencies": {
     "immutable": "^3.8.1",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.0npm run bu",
     "react": "^16.0.0"
   },
   "devDependencies": {

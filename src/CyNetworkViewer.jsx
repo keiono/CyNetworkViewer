@@ -183,8 +183,7 @@ const CyNetworkViewer = RendererComponent => {
       width: '100%',
       height: '100%'
     },
-    eventHandlers: DEF_EVENT_HANDLERS.toJS(),
-    rendererOptions: {}
+    eventHandlers: DEF_EVENT_HANDLERS.toJS()
   }
 
   Viewer.displayName = `Viewer(${getDisplayName(RendererComponent)})`

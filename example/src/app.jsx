@@ -76,7 +76,7 @@ const subTitle = {
 
 // CyNetworkViewer is a higher-order component,
 // taking low-level renderer as its argument.
-const CyJsNetworkViewer = CyNetworkViewer(CytoscapeJsRenderer)
+// const CyJsNetworkViewer = CyNetworkViewer(CytoscapeJsRenderer)
 const SigmaNetworkViewer = CyNetworkViewer(SigmaRenderer)
 
 
@@ -87,10 +87,6 @@ const App = props =>
     <h2 style={props.titleStyle}>CyNetworkViewer Demo</h2>
 
 
-    <div style={subTitle}>Cytoscape.js</div>
-    <CyJsNetworkViewer
-      {...props}
-    />
 
     <SigmaNetworkViewer
       {...props}

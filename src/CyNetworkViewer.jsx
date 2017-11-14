@@ -117,7 +117,6 @@ const CyNetworkViewer = RendererComponent => {
     componentWillReceiveProps(nextProps) {
 
       if (nextProps.network !== this.props.network) {
-        console.log("@ID UPDATED");
         this.setState({
           networkId: shortid.generate()
         })

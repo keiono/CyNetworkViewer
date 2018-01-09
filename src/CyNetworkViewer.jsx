@@ -73,6 +73,11 @@ const DEF_EVENT_HANDLERS = Immutable.fromJS({
     console.log('changeNodePositions called.')
   },
 
+  hoverOnNode: (nodeId, nodeProps) => {
+    console.log("Hover:")
+    console.log(nodeId, nodeProps)
+  },
+
   /**
    * This will be called after executing renderer native commands,
    * such as automatic layout or animation.

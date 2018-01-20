@@ -74,8 +74,8 @@ const DEF_EVENT_HANDLERS = Immutable.fromJS({
   },
 
   hoverOnNode: (nodeId, nodeProps) => {
-    console.log("Hover:")
-    console.log(nodeId, nodeProps)
+    // console.log("Hover:")
+    // console.log(nodeId, nodeProps)
   },
 
   /**
@@ -133,7 +133,7 @@ const CyNetworkViewer = RendererComponent => {
 
       // If network data is not available, simply return empty tag
       if (network === null || network === undefined) {
-        return (<div></div>)
+        return (<div/>)
       }
 
       const handlers = this.buildEventHandlers()
@@ -187,7 +187,10 @@ const CyNetworkViewer = RendererComponent => {
       width: '100%',
       height: '100%'
     },
-    eventHandlers: DEF_EVENT_HANDLERS.toJS()
+    eventHandlers: DEF_EVENT_HANDLERS.toJS(),
+    rendererOptions: {
+      layout: 'preset' // For Cytoscape.js
+    }
   }
 
   Viewer.displayName = `Viewer(${getDisplayName(RendererComponent)})`

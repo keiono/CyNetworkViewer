@@ -45,13 +45,13 @@ const styleCyjs = {
   left: 0,
   width: '50%',
   height: '100%',
-  backgroundColor: '#333333'
+  backgroundColor: '#EEEEEE'
 };
 
 const styleSigma = {
   width: '50%',
   height: '100%',
-  backgroundColor: '#666677',
+  backgroundColor: '#AAAAFF',
   right: 0,
   position: 'fixed'
 };
@@ -76,7 +76,8 @@ const subTitle = {
 
 // CyNetworkViewer is a higher-order component,
 // taking low-level renderer as its argument.
-// const CyJsNetworkViewer = CyNetworkViewer(CytoscapeJsRenderer)
+
+const CyJsNetworkViewer = CyNetworkViewer(CytoscapeJsRenderer)
 const SigmaNetworkViewer = CyNetworkViewer(SigmaRenderer)
 
 
@@ -86,7 +87,10 @@ const App = props =>
 
     <h2 style={props.titleStyle}>CyNetworkViewer Demo</h2>
 
-
+    <CyJsNetworkViewer
+      {...props}
+      style={styleCyjs}
+    />
 
     <SigmaNetworkViewer
       {...props}

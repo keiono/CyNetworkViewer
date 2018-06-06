@@ -74,8 +74,13 @@ const DEF_EVENT_HANDLERS = Immutable.fromJS({
   },
 
   hoverOnNode: (nodeId, nodeProps) => {
-    // console.log("Hover:")
-    // console.log(nodeId, nodeProps)
+    console.log("Hover:")
+    console.log(nodeId, nodeProps)
+  },
+
+  hoverOutNode: (nodeId, nodeProps) => {
+    console.log("Hover out:")
+    console.log(nodeId, nodeProps)
   },
 
   /**

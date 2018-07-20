@@ -3,7 +3,6 @@
  * Sample web app using two types of renderers
  *
  */
-import React from 'react'
 import ReactDOM from 'react-dom'
 import CyNetworkViewer from 'cy-network-viewer'
 import {CytoscapeJsRenderer, SigmaRenderer} from 'cytoscapejs-renderer'

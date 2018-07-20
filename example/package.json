@@ -9,7 +9,7 @@
     "clean": "rm -rf ./build"
   },
   "dependencies": {
-    "cy-network-viewer": "^0.1.0",
+    "cy-network-viewer": "^1.0.0",
     "cytoscapejs-renderer": "^0.1.0",
     "immutable": "^3.8.2",
     "prop-types": "^15.6.0",
